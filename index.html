@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sr. Pizza® - Sistema Multiplataforma B2B & B2C Domicilios</title>
+  <meta name="description" content="Plataforma omnicanal de pedidos y domicilios para Sr. Pizza®: App Móvil Flutter, Panel B2B Kanban, POS Presencial y Landing Web.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- =====================================================================
+       TOP APP NAVIGATION & ROLE SWITCHER
+       ===================================================================== -->
+  <header class="top-nav">
+    <div class="brand-section">
+      <img src="assets/sr_pizza_transparent.png" alt="Sr. Pizza® Logo" class="brand-logo-img">
+      <div>
+        <div class="brand-title">Sr. Pizza®</div>
+        <div class="brand-subtitle">Sistema Omnicanal B2B & B2C</div>
+      </div>
+    </div>
+
+    <!-- Main Navigation View Tabs -->
+    <nav class="view-tabs" aria-label="Selector de Vistas">
+      <button class="tab-btn active" data-view="view-b2b" id="main-tab-b2b">
+        <span>📊 Panel B2B Pizzería</span>
+      </button>
+      <button class="tab-btn" data-view="view-mobile" id="main-tab-mobile">
+        <span>📱 App Móvil (B2C)</span>
+      </button>
+      <button class="tab-btn" data-view="view-pos" id="main-tab-pos">
+        <span>🖥️ Punto de Venta (POS)</span>
+      </button>
+      <button class="tab-btn" data-view="view-landing" id="main-tab-landing">
+        <span>🌐 Landing Page</span>
+      </button>
+      <button class="tab-btn" data-view="view-mockups" id="main-tab-mockups">
+        <span>🎨 Galería Mockups HD</span>
+      </button>
+      <button class="tab-btn" data-view="view-arch" id="main-tab-arch">
+        <span>📐 Arquitectura</span>
+      </button>
+    </nav>
+
+    <!-- Global Quick Actions -->
+    <div class="nav-actions">
+      <button class="action-btn primary" id="btn-top-demo">
+        <span>⚡ + Pedido Demo</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       MAIN WRAPPER FOR ALL SECTIONS
+       ===================================================================== -->
+  <main class="main-wrapper">
+
+    <!-- -------------------------------------------------------------------
+         VIEW 1: B2B PIZZERÍA DASHBOARD & KANBAN OPERACIONES
+         ------------------------------------------------------------------- -->
+    <section id="view-b2b" class="view-section active">
+      <!-- KPI Top Bar -->
+      <div class="kpi-grid">
+        <div class="kpi-card revenue">
+          <div class="kpi-icon">💰</div>
+          <div>
+            <div class="kpi-title">Ventas Totales Hoy</div>
+            <div class="kpi-value" id="kpi-rev">$0</div>
+            <div class="kpi-sub">+18.5% vs promedio</div>
+          </div>
+        </div>
+
+        <div class="kpi-card active-orders">
+          <div class="kpi-icon">🔥</div>
+          <div>
+            <div class="kpi-title">Pedidos Activos en Cocina</div>
+            <div class="kpi-value" id="kpi-act">0</div>
+            <div class="kpi-sub">Horno de leña a 400°C</div>
+          </div>
+        </div>
+
+        <div class="kpi-card drivers">
+          <div class="kpi-icon">🛵</div>
+          <div>
+            <div class="kpi-title">Repartidores en Ruta</div>
+            <div class="kpi-value" id="kpi-route">0 / 3</div>
+            <div class="kpi-sub">Telemetría GPS en vivo</div>
+          </div>
+        </div>
+
+        <div class="kpi-card avg-time">
+          <div class="kpi-icon">⏱️</div>
+          <div>
+            <div class="kpi-title">Tiempo Medio de Entrega</div>
+            <div class="kpi-value">22 min</div>
+            <div class="kpi-sub">Garantía Sr. Pizza® < 30m</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- B2B Layout with Sidebar & 5-Column Kanban -->
+      <div class="b2b-suite-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="b2b-sidebar-nav">
+          <button class="b2b-nav-item active">
+            <span>📋</span>
+            <span>Tablero Domicilios</span>
+          </button>
+          <button class="b2b-nav-item">
+            <span>👨‍🍳</span>
+            <span>Pantalla Cocina KDS</span>
+          </button>
+          <button class="b2b-nav-item">
+            <span>🛵</span>
+            <span>Flota de Repartidores</span>
+          </button>
+          <button class="b2b-nav-item">
+            <span>📊</span>
+            <span>Reportes de Turno</span>
+          </button>
+          <button class="b2b-nav-item">
+            <span>⚙️</span>
+            <span>Configuración Sede</span>
+          </button>
+        </aside>
+
+        <!-- 5-Column Kanban Board -->
+        <div class="kanban-grid-5">
+          <!-- 1. TOMADO -->
+          <div class="kanban-col">
+            <div class="kanban-col-head">
+              <span style="color:var(--status-tomado);">1. TOMADO</span>
+              <span class="col-count" id="badge-tomado">0</span>
+            </div>
+            <div class="kanban-card-deck" id="deck-tomado"></div>
+          </div>
+
+          <!-- 2. ACEPTADO -->
+          <div class="kanban-col">
+            <div class="kanban-col-head">
+              <span style="color:var(--status-aceptado);">2. ACEPTADO</span>
+              <span class="col-count" id="badge-aceptado">0</span>
+            </div>
+            <div class="kanban-card-deck" id="deck-aceptado"></div>
+          </div>
+
+          <!-- 3. EN PREPARACIÓN -->
+          <div class="kanban-col">
+            <div class="kanban-col-head">
+              <span style="color:var(--status-prep);">3. PREPARACIÓN</span>
+              <span class="col-count" id="badge-prep">0</span>
+            </div>
+            <div class="kanban-card-deck" id="deck-prep"></div>
+          </div>
+
+          <!-- 4. DESPACHADO -->
+          <div class="kanban-col">
+            <div class="kanban-col-head">
+              <span style="color:var(--status-despachado);">4. DESPACHADO</span>
+              <span class="col-count" id="badge-despachado">0</span>
+            </div>
+            <div class="kanban-card-deck" id="deck-despachado"></div>
+          </div>
+
+          <!-- 5. ENTREGADO -->
+          <div class="kanban-col">
+            <div class="kanban-col-head">
+              <span style="color:var(--status-entregado);">5. ENTREGADO</span>
+              <span class="col-count" id="badge-entregado">0</span>
+            </div>
+            <div class="kanban-card-deck" id="deck-entregado"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- -------------------------------------------------------------------
+         VIEW 2: B2C MOBILE APP (SIMULADOR FLUTTER CON NAVEGACIÓN ENTRE PANTALLAS)
+         ------------------------------------------------------------------- -->
+    <section id="view-mobile" class="view-section">
+      <!-- Presenter Flow Controller Bar: Click to jump to any screen -->
+      <div class="flow-controller-bar">
+        <div class="flow-title">
+          <span>🎮 Flujo de Pantallas de la App Móvil:</span>
+        </div>
+        <div class="flow-steps-pills">
+          <button class="flow-step-pill active" data-target="splash">1. Bienvenida (Splash)</button>
+          <button class="flow-step-pill" data-target="catalog">2. Menú & Catálogo</button>
+          <button class="flow-step-pill" data-target="customizer">3. Personalizador Pizza</button>
+          <button class="flow-step-pill" data-target="cart">4. Carrito</button>
+          <button class="flow-step-pill" data-target="checkout">5. Checkout & Pago</button>
+          <button class="flow-step-pill" data-target="success">6. Pedido Exitoso</button>
+          <button class="flow-step-pill" data-target="tracking">7. Live Tracking (GPS)</button>
+        </div>
+      </div>
+
+      <div class="mobile-simulator-container">
+        <!-- Physical Smartphone Device -->
+        <div class="phone-device">
+          <!-- Dynamic Island -->
+          <div class="phone-island">
+            <div class="island-dot"></div>
+            <div style="width:6px; height:6px; background:#1e293b; border-radius:50%;"></div>
+          </div>
+
+          <!-- Top Status Bar -->
+          <div class="phone-top-bar">
+            <span>9:41</span>
+            <span>📶 5G 🔋 100%</span>
+          </div>
+
+          <!-- STACK OF SCREENS (With Slide Transitions) -->
+          <div class="phone-screen-stack">
+
+            <!-- SCREEN 1: SPLASH / WELCOME -->
+            <div id="screen-splash" class="phone-screen screen-splash active-screen">
+              <img src="assets/sr_pizza_transparent.png" alt="Sr. Pizza" class="splash-logo-img">
+              <h2 class="splash-title">Sr. Pizza®</h2>
+              <p class="splash-subtitle">Tradición, Pasión y Auténtico Sabor a la Leña en tu Puerta</p>
+
+              <button class="btn-splash-start" onclick="mobileNav.goTo('catalog')">
+                <span>Comenzar Pedido</span>
+                <span>➔</span>
+              </button>
+            </div>
+
+            <!-- SCREEN 2: CATALOG / HOME -->
+            <div id="screen-catalog" class="phone-screen">
+              <div class="app-nav-header">
+                <div style="display:flex; align-items:center; gap:0.5rem;">
+                  <img src="assets/sr_pizza_transparent.png" alt="Sr. Pizza" style="height:26px; width:auto;">
+                  <span class="app-header-title">Sr. Pizza®</span>
+                </div>
+                <span style="font-size:0.75rem; color:var(--pizza-orange-light); font-weight:700;">📍 Bogotá Norte</span>
+              </div>
+
+              <div class="catalog-header-banner">
+                <div>
+                  <div style="font-size:0.7rem; text-transform:uppercase; color:var(--pizza-orange-light); font-weight:800;">Promoción del Día</div>
+                  <div style="font-size:1.1rem; font-weight:800; color:#fff;">2x1 en Medianas</div>
+                  <div style="font-size:0.75rem; color:#cbd5e1;">Horno de piedra natural</div>
+                </div>
+                <div style="font-size:2.5rem;">🍕</div>
+              </div>
+
+              <!-- Categories -->
+              <div class="category-slider">
+                <div class="cat-pill active">🔥 Especialidades</div>
+                <div class="cat-pill">🌿 Tradicionales</div>
+                <div class="cat-pill">🥤 Bebidas</div>
+                <div class="cat-pill">🥖 Entradas</div>
+              </div>
+
+              <!-- Product List -->
+              <div id="catalog-products-list" style="padding-bottom:1rem;"></div>
+            </div>
+
+            <!-- SCREEN 3: PRODUCT DETAIL & CUSTOMIZER -->
+            <div id="screen-customizer" class="phone-screen">
+              <div class="app-nav-header">
+                <button class="nav-back-btn" onclick="mobileNav.goBack()">‹</button>
+                <span class="app-header-title">Personalizar Pizza</span>
+                <div style="width:32px;"></div>
+              </div>
+
+              <div class="custom-hero-visual">
+                <div class="custom-big-emoji" id="custom-pizza-emoji">🍕</div>
+              </div>
+
+              <div class="custom-options-container">
+                <h3 style="font-size:1.15rem; font-weight:800; color:#fff;" id="custom-pizza-title">Pepperoni Suprema</h3>
+                <p style="font-size:0.78rem; color:var(--text-muted); margin-bottom:1rem;" id="custom-pizza-desc">Descripción</p>
+
+                <div class="opt-section-label">1. Selecciona Tamaño</div>
+                <div class="selector-grid-pills" id="cust-sizes">
+                  <div class="select-pill-card" data-size="personal">
+                    <div class="pill-name">Personal</div>
+                    <div class="pill-price">$19.900</div>
+                  </div>
+                  <div class="select-pill-card selected" data-size="mediana">
+                    <div class="pill-name">Mediana</div>
+                    <div class="pill-price">$28.900</div>
+                  </div>
+                  <div class="select-pill-card" data-size="familiar">
+                    <div class="pill-name">Familiar</div>
+                    <div class="pill-price">$39.900</div>
+                  </div>
+                </div>
+
+                <div class="opt-section-label">2. Tipo de Masa</div>
+                <div class="selector-grid-pills" id="cust-crusts">
+                  <div class="select-pill-card selected" data-crust="artesanal" style="grid-column: span 1.5;">
+                    <div class="pill-name">Delgada Artesanal</div>
+                    <div class="pill-price">Incluida</div>
+                  </div>
+                  <div class="select-pill-card" data-crust="queso" style="grid-column: span 1.5;">
+                    <div class="pill-name">Borde de Queso</div>
+                    <div class="pill-price">+ $4.500</div>
+                  </div>
+                </div>
+
+                <div class="opt-section-label">3. Ingredientes Extra (+ $3.500 c/u)</div>
+                <label class="toppings-checkbox-row">
+                  <span>🍄 Champiñones Salteados</span>
+                  <input type="checkbox" class="topping-check" value="Champiñones">
+                </label>
+                <label class="toppings-checkbox-row">
+                  <span>🧀 Extra Queso Mozzarella</span>
+                  <input type="checkbox" class="topping-check" value="Extra Mozzarella">
+                </label>
+                <label class="toppings-checkbox-row">
+                  <span>🥓 Tocineta Ahumada Crispy</span>
+                  <input type="checkbox" class="topping-check" value="Tocineta">
+                </label>
+              </div>
+
+              <button class="btn-add-to-cart" onclick="mobileNav.addToCartFromCustomizer()">
+                <span>Agregar al Carrito</span>
+                <span id="custom-calc-price">$28.900</span>
+              </button>
+            </div>
+
+            <!-- SCREEN 4: CART & SUMMARY -->
+            <div id="screen-cart" class="phone-screen">
+              <div class="app-nav-header">
+                <button class="nav-back-btn" onclick="mobileNav.goBack()">‹</button>
+                <span class="app-header-title">Mi Carrito</span>
+                <div style="width:32px;"></div>
+              </div>
+
+              <!-- Delivery vs Pickup Tab -->
+              <div class="delivery-type-selector" style="margin-top:1rem;">
+                <div class="type-tab active">🛵 Domicilio</div>
+                <div class="type-tab">🏬 Para Llevar</div>
+              </div>
+
+              <!-- Cart items list -->
+              <div class="cart-items-wrapper" id="cart-items-list"></div>
+
+              <!-- Bill Breakdown -->
+              <div id="cart-bill-section">
+                <div class="cart-bill-breakdown">
+                  <div class="bill-line">
+                    <span>Subtotal Productos:</span>
+                    <span id="cart-subtotal">$0</span>
+                  </div>
+                  <div class="bill-line">
+                    <span>Costo de Domicilio:</span>
+                    <span id="cart-delivery-fee">$4.500</span>
+                  </div>
+                  <div class="bill-line grand">
+                    <span>TOTAL A PAGAR:</span>
+                    <span id="cart-grand-total" style="color:var(--success-green);">$0</span>
+                  </div>
+                </div>
+
+                <button class="btn-proceed-checkout" onclick="mobileNav.goTo('checkout')">
+                  <span>Continuar al Pago</span>
+                  <span style="margin-left:8px;">➔</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- SCREEN 5: CHECKOUT & PAYMENT -->
+            <div id="screen-checkout" class="phone-screen">
+              <div class="app-nav-header">
+                <button class="nav-back-btn" onclick="mobileNav.goBack()">‹</button>
+                <span class="app-header-title">Confirmar y Pagar</span>
+                <div style="width:32px;"></div>
+              </div>
+
+              <!-- Address Box -->
+              <div class="checkout-section-box">
+                <div style="font-size:0.75rem; text-transform:uppercase; color:var(--text-muted); font-weight:700;">Dirección de Entrega</div>
+                <div class="address-preview">
+                  <span style="font-size:1.5rem;">📍</span>
+                  <div>
+                    <div style="font-weight:700; color:#fff; font-size:0.88rem;">Calle 93 #14-20, Apto 501</div>
+                    <div style="font-size:0.72rem; color:var(--text-muted);">Bogotá D.C. • Tiempo estimado: 25-30 min</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Payment Methods -->
+              <div class="checkout-section-box">
+                <div style="font-size:0.75rem; text-transform:uppercase; color:var(--text-muted); font-weight:700; margin-bottom:0.6rem;">Método de Pago</div>
+
+                <div class="payment-method-card active">
+                  <div style="display:flex; align-items:center; gap:0.5rem;">
+                    <span>💳</span>
+                    <span>Tarjeta de Crédito / Débito (•••• 4819)</span>
+                  </div>
+                  <span style="color:var(--pizza-orange-light);">✓</span>
+                </div>
+
+                <div class="payment-method-card">
+                  <div style="display:flex; align-items:center; gap:0.5rem;">
+                    <span>💵</span>
+                    <span>Efectivo Contra Entrega</span>
+                  </div>
+                </div>
+
+                <div class="payment-method-card">
+                  <div style="display:flex; align-items:center; gap:0.5rem;">
+                    <span>🍏</span>
+                    <span>Apple Pay / Google Pay</span>
+                  </div>
+                </div>
+              </div>
+
+              <div style="padding:1rem;">
+                <button class="btn-splash-start" id="btn-confirm-checkout">
+                  <span>Pagar</span>
+                  <span id="checkout-final-total">$0</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- SCREEN 6: SUCCESS / ORDER CONFIRMATION -->
+            <div id="screen-success" class="phone-screen">
+              <div class="success-content">
+                <div class="success-icon-badge">✓</div>
+                <h2 style="font-size:1.6rem; font-weight:800; color:#fff; margin-bottom:0.4rem;">¡Pedido Confirmado!</h2>
+                <div style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1.5rem;">
+                  Tu orden <strong id="success-order-code" style="color:var(--pizza-orange-light);">#PZ-0000</strong> ya fue enviada directamente a los hornos de Sr. Pizza®.
+                </div>
+
+                <div style="background:var(--bg-card); padding:1rem; border-radius:14px; width:100%; border:1px solid var(--border-color); margin-bottom:2rem; font-size:0.82rem; text-align:left;">
+                  <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                    <span style="color:var(--text-muted);">Tiempo estimado:</span>
+                    <strong style="color:#fff;">20 - 30 min</strong>
+                  </div>
+                  <div style="display:flex; justify-content:space-between;">
+                    <span style="color:var(--text-muted);">Canal:</span>
+                    <strong style="color:var(--pizza-orange-light);">App Oficial Sr. Pizza®</strong>
+                  </div>
+                </div>
+
+                <button class="btn-splash-start" onclick="mobileNav.goTo('tracking')">
+                  <span>Rastrear en Vivo con GPS</span>
+                  <span>🛵</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- SCREEN 7: LIVE TRACKING (SYNCED WITH B2B KANBAN) -->
+            <div id="screen-tracking" class="phone-screen">
+              <div class="app-nav-header">
+                <button class="nav-back-btn" onclick="mobileNav.goTo('catalog')">‹</button>
+                <span class="app-header-title">Seguimiento en Vivo</span>
+                <div style="width:32px;"></div>
+              </div>
+
+              <div class="tracking-wrapper">
+                <div class="tracking-hero-status">
+                  <div style="font-size:0.75rem; color:var(--pizza-orange-light); font-weight:700;" id="track-order-code">#PZ-0000</div>
+                  <div style="font-size:1.25rem; font-weight:800; color:#fff; margin:4px 0;" id="track-eta-banner">Preparando en horno de leña</div>
+                  <div style="font-size:0.75rem; color:var(--text-muted);">Sincronizado en tiempo real con cocina</div>
+                </div>
+
+                <!-- Simulated Dark GPS Map -->
+                <div class="dark-gps-map" id="tracking-live-map" style="display:none;">
+                  <div class="gps-route"></div>
+                  <div class="gps-scooter">🛵</div>
+                  <div style="position:absolute; bottom:6px; right:8px; background:rgba(0,0,0,0.8); padding:2px 8px; border-radius:4px; font-size:0.65rem; color:#fff;">
+                    📍 GPS en Ruta
+                  </div>
+                </div>
+
+                <!-- Driver Card -->
+                <div class="driver-pill-info" id="tracking-driver-card" style="display:none;">
+                  <div class="driver-profile">
+                    <div class="driver-avatar">👨‍🚀</div>
+                    <div>
+                      <div id="track-driver-name" style="font-size:0.85rem; font-weight:800; color:#fff;">Carlos Mendoza</div>
+                      <div id="track-driver-vehicle" style="font-size:0.72rem; color:var(--text-muted);">Moto Honda 160</div>
+                    </div>
+                  </div>
+                  <button style="background:var(--brand-red); border:none; color:#fff; width:34px; height:34px; border-radius:50%; cursor:pointer;">
+                    📞
+                  </button>
+                </div>
+
+                <!-- 5-Step Stepper -->
+                <div class="stepper-timeline" id="tracking-stepper-container"></div>
+
+                <!-- Delivery Address & PIN -->
+                <div style="background:var(--bg-card); border-radius:12px; padding:0.85rem; border:1px solid var(--border-color); font-size:0.78rem;">
+                  <div style="font-weight:700; color:#fff; margin-bottom:2px;">Dirección de Entrega:</div>
+                  <div id="track-address-text" style="color:var(--text-muted); margin-bottom:6px;">Calle 93 #14-20</div>
+                  <div style="display:flex; justify-content:space-between; border-top:1px solid rgba(255,255,255,0.06); padding-top:6px;">
+                    <span>PIN de Entrega:</span>
+                    <strong id="track-pin-code" style="color:var(--pizza-orange-light); font-size:0.95rem; letter-spacing:2px;">0000</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom Navigation Bar (Visible on internal screens) -->
+          <nav class="phone-bottom-nav" id="phone-bottom-nav">
+            <button class="bottom-nav-item active" id="bnav-home">
+              <span class="b-icon">🏠</span>
+              <span>Menú</span>
+            </button>
+            <button class="bottom-nav-item" id="bnav-cart">
+              <span class="b-icon">🛒</span>
+              <span>Carrito</span>
+              <span class="nav-badge-count" id="cart-badge-count" style="display:none;">0</span>
+            </button>
+            <button class="bottom-nav-item" id="bnav-orders">
+              <span class="b-icon">📦</span>
+              <span>Rastreo</span>
+            </button>
+          </nav>
+        </div>
+
+        <!-- Explanatory Side Card for Clients -->
+        <div style="max-width: 460px; display:flex; flex-direction:column; gap:1.25rem;">
+          <div class="kpi-card" style="display:block;">
+            <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+              <img src="assets/sr_pizza_transparent.png" alt="Sr. Pizza Logo" style="height:32px;">
+              <h3 style="font-size:1.2rem; font-weight:800; color:#fff;">App Oficial Sr. Pizza®</h3>
+            </div>
+            <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">
+              Prototipo táctil con <strong>navegación real pantalla a pantalla</strong> simulando la aplicación compilada en Flutter para iOS y Android.
+            </p>
+
+            <div style="background:rgba(205,34,18,0.15); border-left:3px solid var(--brand-red); padding:0.85rem; border-radius:6px; margin:1rem 0; font-size:0.8rem; color:#fff;">
+              👉 <strong>Pruébalo en vivo:</strong> Puedes hacer clic en los botones del teléfono (o en los botones superiores de la barra de flujo) para navegar entre:
+              <br><strong>Splash ➔ Catálogo ➔ Personalizador ➔ Carrito ➔ Checkout ➔ Live Tracking</strong>.
+            </div>
+
+            <p style="font-size:0.8rem; color:var(--text-dim);">
+              💡 Cualquier pedido que finalices en el checkout de la app entra en tiempo real a la columna <strong>1. TOMADO</strong> del <em>Panel B2B Pizzería</em>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- -------------------------------------------------------------------
+         VIEW 3: POS PRESENCIAL (PUNTO DE VENTA Y KIOSKO)
+         ------------------------------------------------------------------- -->
+    <section id="view-pos" class="view-section">
+      <div class="pos-container">
+        <!-- Products Grid Panel -->
+        <div class="pos-catalog-panel">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div style="display:flex; align-items:center; gap:0.75rem;">
+              <img src="assets/sr_pizza_transparent.png" alt="Sr. Pizza" style="height:36px;">
+              <div>
+                <h2 style="font-size:1.25rem; font-weight:800; color:#fff;">Sr. Pizza® - Terminal de Venta Mostrador</h2>
+                <p style="font-size:0.78rem; color:var(--text-muted);">Caja presencial y Kiosko táctil de autoservicio.</p>
+              </div>
+            </div>
+            <span class="channel-tag pos">Caja 01 - Principal</span>
+          </div>
+
+          <div class="pos-grid-items" id="pos-catalog-grid"></div>
+        </div>
+
+        <!-- Virtual Receipt & Fast Payment Panel -->
+        <div class="pos-ticket-panel">
+          <div class="pos-ticket-header">
+            <div style="font-weight:800; font-size:1.1rem; color:#fff;">SR. PIZZA® - TICKET #POS-88</div>
+            <div style="font-size:0.75rem; color:var(--text-dim);">Mostrador / Consumo Local</div>
+          </div>
+
+          <div class="pos-ticket-items-list" id="pos-ticket-items"></div>
+
+          <div class="pos-ticket-totals">
+            <div style="display:flex; justify-content:space-between; font-size:0.85rem; color:var(--text-muted);">
+              <span>Subtotal:</span>
+              <span id="pos-subtotal">$0</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:0.85rem; color:var(--text-muted);">
+              <span>Impoconsumo (8%):</span>
+              <span id="pos-iva">$0</span>
+            </div>
+            <div class="pos-grand-total">
+              <span>TOTAL:</span>
+              <span id="pos-total">$0</span>
+            </div>
+          </div>
+
+          <div class="pos-payment-buttons">
+            <button class="pos-pay-btn" onclick="checkoutPOS('Efectivo')">
+              <span style="font-size:1.4rem;">💵</span>
+              <span>Cobrar Efectivo</span>
+            </button>
+            <button class="pos-pay-btn" onclick="checkoutPOS('Datáfono')">
+              <span style="font-size:1.4rem;">💳</span>
+              <span>Datáfono / Tarjeta</span>
+            </button>
+            <button class="pos-pay-btn" style="grid-column: span 2;" onclick="checkoutPOS('Código QR')">
+              <span style="font-size:1.4rem;">📱</span>
+              <span>Pago Rápido QR Transferencia</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- -------------------------------------------------------------------
+         VIEW 4: LANDING PAGE COMERCIAL (REACT WEB STYLE)
+         ------------------------------------------------------------------- -->
+    <section id="view-landing" class="view-section">
+      <div class="landing-hero" style="background: radial-gradient(circle at top right, rgba(205,34,18,0.25), transparent 60%), var(--bg-secondary);">
+        <img src="assets/sr_pizza_transparent.png" alt="Sr. Pizza" style="height:70px; margin-bottom:1rem;">
+        <div class="hero-tag" style="background:rgba(205,34,18,0.2); border-color:var(--brand-red); color:#fca5a5;">
+          🔥 Pasión Napolitana y Horno a la Leña
+        </div>
+        <h1 class="hero-title">El Auténtico Sabor de Sr. Pizza®,<br>en Tu Mesa en Menos de 30 Minutos.</h1>
+        <p class="hero-desc">
+          Descarga nuestra aplicación oficial para iOS y Android, personaliza tus pizzas favoritas al instante y sigue a tu repartidor en tiempo real por GPS.
+        </p>
+
+        <div class="store-badges-row">
+          <div class="store-badge-btn" onclick="document.getElementById('main-tab-mobile').click()">
+            <span style="font-size:2rem;">🍏</span>
+            <div style="text-align:left;">
+              <div style="font-size:0.65rem; color:var(--text-muted);">Descárgalo en el</div>
+              <div style="font-size:1rem; font-weight:800;">App Store</div>
+            </div>
+          </div>
+
+          <div class="store-badge-btn" onclick="document.getElementById('main-tab-mobile').click()">
+            <span style="font-size:2rem;">🤖</span>
+            <div style="text-align:left;">
+              <div style="font-size:0.65rem; color:var(--text-muted);">Disponible en</div>
+              <div style="font-size:1rem; font-weight:800;">Google Play</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- -------------------------------------------------------------------
+         VIEW 5: MOCKUPS HIGH-DEFINITION GALLERY (FOR CLIENT PITCH)
+         ------------------------------------------------------------------- -->
+    <section id="view-mockups" class="view-section">
+      <div style="margin-bottom: 2rem;">
+        <h2 style="font-size: 1.6rem; font-weight:800; color:#fff;">🎨 Renders Visuales de Alta Fidelidad para Presentación</h2>
+        <p style="color:var(--text-muted); font-size:0.9rem;">
+          Diseños de interfaz fotorrealistas listos para presentar al cliente, inversionistas o stakeholders de Sr. Pizza®.
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+        <!-- Mockup 1: Mobile App -->
+        <div class="mockup-gallery-card">
+          <div class="mockup-img-wrapper">
+            <img src="assets/mockup_mobile.jpg" alt="Mockup App Móvil Sr. Pizza">
+          </div>
+          <div class="mockup-card-body">
+            <div class="mockup-tag">B2C • Flutter (iOS & Android)</div>
+            <h3>App de Clientes & Live Tracking</h3>
+            <p>
+              Personalización de pizza e ingredientes, selector de masa y seguimiento en vivo con telemetría de motorizado y mapa nocturno.
+            </p>
+          </div>
+        </div>
+
+        <!-- Mockup 2: B2B Dashboard -->
+        <div class="mockup-gallery-card">
+          <div class="mockup-img-wrapper">
+            <img src="assets/mockup_b2b_dashboard.jpg" alt="Mockup Panel B2B Sr. Pizza">
+          </div>
+          <div class="mockup-card-body">
+            <div class="mockup-tag">B2B • Consola de Restaurante</div>
+            <h3>Centro de Control Operativo & Kanban</h3>
+            <p>
+              Panel administrativo para pizzerías con las 5 columnas requeridas (Tomado, Aceptado, En Preparación, Despachado, Entregado) y tiempos de cocción.
+            </p>
+          </div>
+        </div>
+
+        <!-- Mockup 3: POS Kiosk -->
+        <div class="mockup-gallery-card">
+          <div class="mockup-img-wrapper">
+            <img src="assets/mockup_pos_kiosk.jpg" alt="Mockup POS Kiosko Sr. Pizza">
+          </div>
+          <div class="mockup-card-body">
+            <div class="mockup-tag">Presencial • Kiosko Táctil</div>
+            <h3>Punto de Venta Presencial & Autoservicio</h3>
+            <p>
+              Terminal táctil de mostrador con cobro contactless e impresión automática de comandas de cocina.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- -------------------------------------------------------------------
+         VIEW 6: ARCHITECTURE & CLEAN ARCHITECTURE VIEWER
+         ------------------------------------------------------------------- -->
+    <section id="view-arch" class="view-section">
+      <div class="arch-container">
+        <div class="arch-card">
+          <h3>📐 Clean Architecture Feature-First en Flutter (Módulo Domicilios)</h3>
+          <div class="clean-arch-diagram">
+            <div class="clean-arch-box" style="border-top-color:var(--brand-red);">
+              <h4>1. Capa de Dominio (Domain)</h4>
+              <p style="font-size:0.75rem; color:var(--text-dim); margin-bottom:0.5rem;">Dart puro (Zero dependencias de UI)</p>
+              <ul>
+                <li>📄 <strong>Entities:</strong> Order, OrderItem, OrderStatus, DriverTracking</li>
+                <li>📜 <strong>Repositories:</strong> IOrderRepository, IDriverTrackingRepository</li>
+                <li>🎯 <strong>Use Cases:</strong> WatchOrderStatusStream, TransitionOrderStatus</li>
+              </ul>
+            </div>
+
+            <div class="clean-arch-box" style="border-top-color:var(--brand-red);">
+              <h4>2. Capa de Datos (Data)</h4>
+              <p style="font-size:0.75rem; color:var(--text-dim); margin-bottom:0.5rem;">APIs REST, WebSockets y caché local</p>
+              <ul>
+                <li>🌐 <strong>Remote DataSource:</strong> REST API (Dio)</li>
+                <li>⚡ <strong>WebSocket DataSource:</strong> Socket.io en tiempo real</li>
+                <li>💾 <strong>Local DataSource:</strong> Hive / SQLite offline</li>
+              </ul>
+            </div>
+
+            <div class="clean-arch-box" style="border-top-color:var(--brand-red);">
+              <h4>3. Capa de Presentación</h4>
+              <p style="font-size:0.75rem; color:var(--text-dim); margin-bottom:0.5rem;">Widgets y BLoC / Riverpod</p>
+              <ul>
+                <li>🧠 <strong>BLoC:</strong> OrderLifecycleBloc, LiveMapCubit</li>
+                <li>📱 <strong>Widgets:</strong> StatusStepperWidget, DriverLiveMapView</li>
+                <li>🖥️ <strong>Screens:</strong> OrderTrackingScreen, ActiveDeliveriesKanban</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
