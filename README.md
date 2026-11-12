@@ -184,38 +184,25 @@ La estabilidad de la plataforma esta respaldada por una bateria exhaustiva de pr
 
 ---
 
-## 6. Ejecucion del Entorno Local
+## 6. Ejecucion del Showcase Interactivo
 
-### Requisitos Previos
-- Node.js 20 o superior
-- Administrador de paquetes npm
+Este repositorio contiene la aplicacion web interactiva de demostracion (HTML5, CSS3, JavaScript ES6+), disenada para ejecutarse directamente en cualquier navegador moderno o servirse mediante GitHub Pages o un servidor web local:
 
-### Pasos de Puesta en Marcha
+### Opcion 1: Apertura Directa
+Abra el archivo `index.html` en su navegador de preferencia (Chrome, Edge, Firefox, Safari).
 
-1. **Instalacion de Dependencias:**
-   ```bash
-   npm install
-   ```
+### Opcion 2: Servidor Local
+Para una experiencia completa con recarga y navegacion local:
 
-2. **Ejecucion en Modo Desarrollo (Backend + Frontend):**
-   ```bash
-   # Opcion recomendada: arranca ambos entornos simultaneamente
-   npm run dev
+```bash
+# Con Python 3
+python3 -m http.server 8080
 
-   # O por separado en terminales independientes:
-   npm run dev:backend   # Escuchando en http://localhost:4000
-   npm run dev:frontend  # Escuchando en http://localhost:5173
-   ```
+# O con npx serve
+npx serve .
+```
 
-3. **Ejecucion de la Suite de Pruebas:**
-   ```bash
-   npm test --prefix backend
-   ```
-
-4. **Compilacion de Produccion:**
-   ```bash
-   npm run build
-   ```
+Abra `http://localhost:8080` en su navegador para explorar la simulacion de pedidos, KDS de cocina, telemetria de repartidores y diagramas de arquitectura.
 
 ---
 

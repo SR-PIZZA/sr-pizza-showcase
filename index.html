@@ -30,29 +30,29 @@
     <!-- Main Navigation View Tabs -->
     <nav class="view-tabs" aria-label="Selector de Vistas">
       <button class="tab-btn active" data-view="view-b2b" id="main-tab-b2b">
-        <span>📊 Panel B2B Pizzería</span>
+        <span>Panel B2B Pizzería</span>
       </button>
       <button class="tab-btn" data-view="view-mobile" id="main-tab-mobile">
-        <span>📱 App Móvil (B2C)</span>
+        <span>App Móvil (B2C)</span>
       </button>
       <button class="tab-btn" data-view="view-pos" id="main-tab-pos">
-        <span>🖥️ Punto de Venta (POS)</span>
+        <span>Punto de Venta (POS)</span>
       </button>
       <button class="tab-btn" data-view="view-landing" id="main-tab-landing">
-        <span>🌐 Landing Page</span>
+        <span>Portal Web</span>
       </button>
       <button class="tab-btn" data-view="view-mockups" id="main-tab-mockups">
-        <span>🎨 Galería Mockups HD</span>
+        <span>Galería Mockups HD</span>
       </button>
       <button class="tab-btn" data-view="view-arch" id="main-tab-arch">
-        <span>📐 Arquitectura</span>
+        <span>Arquitectura del Sistema</span>
       </button>
     </nav>
 
     <!-- Global Quick Actions -->
     <div class="nav-actions">
       <button class="action-btn primary" id="btn-top-demo">
-        <span>⚡ + Pedido Demo</span>
+        <span>+ Inyectar Pedido Demo</span>
       </button>
     </div>
   </header>
@@ -69,7 +69,7 @@
       <!-- KPI Top Bar -->
       <div class="kpi-grid">
         <div class="kpi-card revenue">
-          <div class="kpi-icon">💰</div>
+          <div class="kpi-icon" style="font-size: 1.1rem; font-weight: 800; color: #10b981;">COP</div>
           <div>
             <div class="kpi-title">Ventas Totales Hoy</div>
             <div class="kpi-value" id="kpi-rev">$0</div>
@@ -78,7 +78,7 @@
         </div>
 
         <div class="kpi-card active-orders">
-          <div class="kpi-icon">🔥</div>
+          <div class="kpi-icon" style="font-size: 1.1rem; font-weight: 800; color: #f59e0b;">KDS</div>
           <div>
             <div class="kpi-title">Pedidos Activos en Cocina</div>
             <div class="kpi-value" id="kpi-act">0</div>
@@ -87,20 +87,20 @@
         </div>
 
         <div class="kpi-card drivers">
-          <div class="kpi-icon">🛵</div>
+          <div class="kpi-icon" style="font-size: 1.1rem; font-weight: 800; color: #3b82f6;">GPS</div>
           <div>
             <div class="kpi-title">Repartidores en Ruta</div>
             <div class="kpi-value" id="kpi-route">0 / 3</div>
-            <div class="kpi-sub">Telemetría GPS en vivo</div>
+            <div class="kpi-sub">Telemetría vial en vivo</div>
           </div>
         </div>
 
         <div class="kpi-card avg-time">
-          <div class="kpi-icon">⏱️</div>
+          <div class="kpi-icon" style="font-size: 1.1rem; font-weight: 800; color: #8b5cf6;">SLA</div>
           <div>
             <div class="kpi-title">Tiempo Medio de Entrega</div>
             <div class="kpi-value">22 min</div>
-            <div class="kpi-sub">Garantía Sr. Pizza® < 30m</div>
+            <div class="kpi-sub">Garantía Sr. Pizza &lt; 30m</div>
           </div>
         </div>
       </div>
@@ -110,24 +110,19 @@
         <!-- Sidebar Navigation -->
         <aside class="b2b-sidebar-nav">
           <button class="b2b-nav-item active">
-            <span>📋</span>
             <span>Tablero Domicilios</span>
           </button>
           <button class="b2b-nav-item">
-            <span>👨‍🍳</span>
             <span>Pantalla Cocina KDS</span>
           </button>
           <button class="b2b-nav-item">
-            <span>🛵</span>
             <span>Flota de Repartidores</span>
           </button>
           <button class="b2b-nav-item">
-            <span>📊</span>
-            <span>Reportes de Turno</span>
+            <span>Cierre de Turno & Arqueo</span>
           </button>
           <button class="b2b-nav-item">
-            <span>⚙️</span>
-            <span>Configuración Sede</span>
+            <span>Sedes Popayán</span>
           </button>
         </aside>
 
@@ -188,7 +183,7 @@
       <!-- Presenter Flow Controller Bar: Click to jump to any screen -->
       <div class="flow-controller-bar">
         <div class="flow-title">
-          <span>🎮 Flujo de Pantallas de la App Móvil:</span>
+          <span>Flujo de Pantallas de la App Móvil:</span>
         </div>
         <div class="flow-steps-pills">
           <button class="flow-step-pill active" data-target="splash">1. Bienvenida (Splash)</button>
@@ -213,7 +208,7 @@
           <!-- Top Status Bar -->
           <div class="phone-top-bar">
             <span>9:41</span>
-            <span>📶 5G 🔋 100%</span>
+            <span>5G • Batería 100%</span>
           </div>
 
           <!-- STACK OF SCREENS (With Slide Transitions) -->
@@ -222,12 +217,12 @@
             <!-- SCREEN 1: SPLASH / WELCOME -->
             <div id="screen-splash" class="phone-screen screen-splash active-screen">
               <img src="assets/sr_pizza_transparent.png" alt="Sr. Pizza" class="splash-logo-img">
-              <h2 class="splash-title">Sr. Pizza®</h2>
-              <p class="splash-subtitle">Tradición, Pasión y Auténtico Sabor a la Leña en tu Puerta</p>
+              <h2 class="splash-title">Sr. Pizza® Popayán</h2>
+              <p class="splash-subtitle">Tradición, Pasión y Auténtica Pizza a la Leña en tu Puerta</p>
 
               <button class="btn-splash-start" onclick="mobileNav.goTo('catalog')">
                 <span>Comenzar Pedido</span>
-                <span>➔</span>
+                <span style="font-weight:900;">&rarr;</span>
               </button>
             </div>
 
@@ -238,24 +233,24 @@
                   <img src="assets/sr_pizza_transparent.png" alt="Sr. Pizza" style="height:26px; width:auto;">
                   <span class="app-header-title">Sr. Pizza®</span>
                 </div>
-                <span style="font-size:0.75rem; color:var(--pizza-orange-light); font-weight:700;">📍 Bogotá Norte</span>
+                <span style="font-size:0.75rem; color:var(--pizza-orange-light); font-weight:700;">Popayán, Cauca</span>
               </div>
 
-              <div class="catalog-header-banner">
+              <div class="catalog-header-banner" style="display:flex; justify-content:space-between; align-items:center;">
                 <div>
-                  <div style="font-size:0.7rem; text-transform:uppercase; color:var(--pizza-orange-light); font-weight:800;">Promoción del Día</div>
-                  <div style="font-size:1.1rem; font-weight:800; color:#fff;">2x1 en Medianas</div>
-                  <div style="font-size:0.75rem; color:#cbd5e1;">Horno de piedra natural</div>
+                  <div style="font-size:0.7rem; text-transform:uppercase; color:var(--pizza-orange-light); font-weight:800;">Especial de la Casa</div>
+                  <div style="font-size:1.05rem; font-weight:800; color:#fff;">Pizza 8 Sabores 50cm</div>
+                  <div style="font-size:0.75rem; color:#cbd5e1;">Masa artesanal y horno de leña</div>
                 </div>
-                <div style="font-size:2.5rem;">🍕</div>
+                <img src="assets/pizza_completa_todos_sabores_badge.webp" alt="Pizza 8 Sabores" style="width:58px; height:58px; object-fit:contain; border-radius:50%; box-shadow:0 4px 10px rgba(0,0,0,0.4);">
               </div>
 
               <!-- Categories -->
               <div class="category-slider">
-                <div class="cat-pill active">🔥 Especialidades</div>
-                <div class="cat-pill">🌿 Tradicionales</div>
-                <div class="cat-pill">🥤 Bebidas</div>
-                <div class="cat-pill">🥖 Entradas</div>
+                <div class="cat-pill active">Especialidades Popayán</div>
+                <div class="cat-pill">Tradicionales</div>
+                <div class="cat-pill">Bebidas y Adiciones</div>
+                <div class="cat-pill">Combos Familiares</div>
               </div>
 
               <!-- Product List -->
@@ -265,32 +260,32 @@
             <!-- SCREEN 3: PRODUCT DETAIL & CUSTOMIZER -->
             <div id="screen-customizer" class="phone-screen">
               <div class="app-nav-header">
-                <button class="nav-back-btn" onclick="mobileNav.goBack()">‹</button>
+                <button class="nav-back-btn" onclick="mobileNav.goBack()">&lsaquo;</button>
                 <span class="app-header-title">Personalizar Pizza</span>
                 <div style="width:32px;"></div>
               </div>
 
-              <div class="custom-hero-visual">
-                <div class="custom-big-emoji" id="custom-pizza-emoji">🍕</div>
+              <div class="custom-hero-visual" style="display:flex; justify-content:center; align-items:center; padding:1.2rem 0;">
+                <img id="custom-pizza-img" src="assets/pizza_completa_todos_sabores_badge.webp" alt="Pizza" style="width:110px; height:110px; object-fit:contain; border-radius:50%; box-shadow:0 8px 24px rgba(0,0,0,0.5);">
               </div>
 
               <div class="custom-options-container">
-                <h3 style="font-size:1.15rem; font-weight:800; color:#fff;" id="custom-pizza-title">Pepperoni Suprema</h3>
+                <h3 style="font-size:1.15rem; font-weight:800; color:#fff;" id="custom-pizza-title">Pizza 8 Sabores 50cm</h3>
                 <p style="font-size:0.78rem; color:var(--text-muted); margin-bottom:1rem;" id="custom-pizza-desc">Descripción</p>
 
                 <div class="opt-section-label">1. Selecciona Tamaño</div>
                 <div class="selector-grid-pills" id="cust-sizes">
-                  <div class="select-pill-card" data-size="personal">
-                    <div class="pill-name">Personal</div>
-                    <div class="pill-price">$19.900</div>
+                  <div class="select-pill-card" data-size="porcion">
+                    <div class="pill-name">Porción</div>
+                    <div class="pill-price">$10.000</div>
                   </div>
-                  <div class="select-pill-card selected" data-size="mediana">
+                  <div class="select-pill-card" data-size="mediana">
                     <div class="pill-name">Mediana</div>
-                    <div class="pill-price">$28.900</div>
+                    <div class="pill-price">$45.000</div>
                   </div>
-                  <div class="select-pill-card" data-size="familiar">
-                    <div class="pill-name">Familiar</div>
-                    <div class="pill-price">$39.900</div>
+                  <div class="select-pill-card selected" data-size="familiar">
+                    <div class="pill-name">50cm (8 Sabores)</div>
+                    <div class="pill-price">$80.000</div>
                   </div>
                 </div>
 
@@ -302,43 +297,43 @@
                   </div>
                   <div class="select-pill-card" data-crust="queso" style="grid-column: span 1.5;">
                     <div class="pill-name">Borde de Queso</div>
-                    <div class="pill-price">+ $4.500</div>
+                    <div class="pill-price">+ $5.000</div>
                   </div>
                 </div>
 
-                <div class="opt-section-label">3. Ingredientes Extra (+ $3.500 c/u)</div>
+                <div class="opt-section-label">3. Ingredientes Extra (+ $4.000 c/u)</div>
                 <label class="toppings-checkbox-row">
-                  <span>🍄 Champiñones Salteados</span>
+                  <span>Champiñones Salteados</span>
                   <input type="checkbox" class="topping-check" value="Champiñones">
                 </label>
                 <label class="toppings-checkbox-row">
-                  <span>🧀 Extra Queso Mozzarella</span>
+                  <span>Extra Queso Mozzarella</span>
                   <input type="checkbox" class="topping-check" value="Extra Mozzarella">
                 </label>
                 <label class="toppings-checkbox-row">
-                  <span>🥓 Tocineta Ahumada Crispy</span>
+                  <span>Tocineta Ahumada Crispy</span>
                   <input type="checkbox" class="topping-check" value="Tocineta">
                 </label>
               </div>
 
               <button class="btn-add-to-cart" onclick="mobileNav.addToCartFromCustomizer()">
                 <span>Agregar al Carrito</span>
-                <span id="custom-calc-price">$28.900</span>
+                <span id="custom-calc-price">$80.000</span>
               </button>
             </div>
 
             <!-- SCREEN 4: CART & SUMMARY -->
             <div id="screen-cart" class="phone-screen">
               <div class="app-nav-header">
-                <button class="nav-back-btn" onclick="mobileNav.goBack()">‹</button>
+                <button class="nav-back-btn" onclick="mobileNav.goBack()">&lsaquo;</button>
                 <span class="app-header-title">Mi Carrito</span>
                 <div style="width:32px;"></div>
               </div>
 
               <!-- Delivery vs Pickup Tab -->
               <div class="delivery-type-selector" style="margin-top:1rem;">
-                <div class="type-tab active">🛵 Domicilio</div>
-                <div class="type-tab">🏬 Para Llevar</div>
+                <div class="type-tab active">Domicilio Urbano</div>
+                <div class="type-tab">Retiro en Sede</div>
               </div>
 
               <!-- Cart items list -->
@@ -363,7 +358,7 @@
 
                 <button class="btn-proceed-checkout" onclick="mobileNav.goTo('checkout')">
                   <span>Continuar al Pago</span>
-                  <span style="margin-left:8px;">➔</span>
+                  <span style="margin-left:8px; font-weight:900;">&rarr;</span>
                 </button>
               </div>
             </div>
@@ -371,7 +366,7 @@
             <!-- SCREEN 5: CHECKOUT & PAYMENT -->
             <div id="screen-checkout" class="phone-screen">
               <div class="app-nav-header">
-                <button class="nav-back-btn" onclick="mobileNav.goBack()">‹</button>
+                <button class="nav-back-btn" onclick="mobileNav.goBack()">&lsaquo;</button>
                 <span class="app-header-title">Confirmar y Pagar</span>
                 <div style="width:32px;"></div>
               </div>
@@ -380,10 +375,10 @@
               <div class="checkout-section-box">
                 <div style="font-size:0.75rem; text-transform:uppercase; color:var(--text-muted); font-weight:700;">Dirección de Entrega</div>
                 <div class="address-preview">
-                  <span style="font-size:1.5rem;">📍</span>
+                  <span class="status-badge live" style="font-size:0.7rem; padding:4px 8px;">GPS</span>
                   <div>
-                    <div style="font-weight:700; color:#fff; font-size:0.88rem;">Calle 93 #14-20, Apto 501</div>
-                    <div style="font-size:0.72rem; color:var(--text-muted);">Bogotá D.C. • Tiempo estimado: 25-30 min</div>
+                    <div style="font-weight:700; color:#fff; font-size:0.88rem;">Carrera 9 # 18N-45, Torres del Río</div>
+                    <div style="font-size:0.72rem; color:var(--text-muted);">Popayán, Cauca &bull; Tiempo estimado: 20-30 min</div>
                   </div>
                 </div>
               </div>
@@ -394,30 +389,30 @@
 
                 <div class="payment-method-card active">
                   <div style="display:flex; align-items:center; gap:0.5rem;">
-                    <span>💳</span>
-                    <span>Tarjeta de Crédito / Débito (•••• 4819)</span>
+                    <span class="channel-tag web" style="font-size:0.65rem;">Tarjeta</span>
+                    <span>Tarjeta de Crédito / Débito (&bull;&bull;&bull;&bull; 4819)</span>
                   </div>
-                  <span style="color:var(--pizza-orange-light);">✓</span>
+                  <span style="color:var(--pizza-orange-light); font-weight:800;">OK</span>
                 </div>
 
                 <div class="payment-method-card">
                   <div style="display:flex; align-items:center; gap:0.5rem;">
-                    <span>💵</span>
+                    <span class="channel-tag pos" style="font-size:0.65rem;">Efectivo</span>
                     <span>Efectivo Contra Entrega</span>
                   </div>
                 </div>
 
                 <div class="payment-method-card">
                   <div style="display:flex; align-items:center; gap:0.5rem;">
-                    <span>🍏</span>
-                    <span>Apple Pay / Google Pay</span>
+                    <span class="channel-tag app" style="font-size:0.65rem;">Digital</span>
+                    <span>Nequi / Daviplata / PSE</span>
                   </div>
                 </div>
               </div>
 
               <div style="padding:1rem;">
                 <button class="btn-splash-start" id="btn-confirm-checkout">
-                  <span>Pagar</span>
+                  <span>Confirmar y Enviar Pedido</span>
                   <span id="checkout-final-total">$0</span>
                 </button>
               </div>
@@ -426,16 +421,20 @@
             <!-- SCREEN 6: SUCCESS / ORDER CONFIRMATION -->
             <div id="screen-success" class="phone-screen">
               <div class="success-content">
-                <div class="success-icon-badge">✓</div>
+                <div class="success-icon-badge" style="font-size:1.2rem; font-weight:900;">OK</div>
                 <h2 style="font-size:1.6rem; font-weight:800; color:#fff; margin-bottom:0.4rem;">¡Pedido Confirmado!</h2>
                 <div style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1.5rem;">
-                  Tu orden <strong id="success-order-code" style="color:var(--pizza-orange-light);">#PZ-0000</strong> ya fue enviada directamente a los hornos de Sr. Pizza®.
+                  Tu orden <strong id="success-order-code" style="color:var(--pizza-orange-light);">#PZ-0000</strong> ya fue transmitida en tiempo real a la cocina de Sr. Pizza®.
                 </div>
 
                 <div style="background:var(--bg-card); padding:1rem; border-radius:14px; width:100%; border:1px solid var(--border-color); margin-bottom:2rem; font-size:0.82rem; text-align:left;">
                   <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
                     <span style="color:var(--text-muted);">Tiempo estimado:</span>
                     <strong style="color:#fff;">20 - 30 min</strong>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                    <span style="color:var(--text-muted);">Sede Despacho:</span>
+                    <strong style="color:#fff;">Sede Torres del Río (Popayán)</strong>
                   </div>
                   <div style="display:flex; justify-content:space-between;">
                     <span style="color:var(--text-muted);">Canal:</span>
@@ -445,7 +444,7 @@
 
                 <button class="btn-splash-start" onclick="mobileNav.goTo('tracking')">
                   <span>Rastrear en Vivo con GPS</span>
-                  <span>🛵</span>
+                  <span style="font-weight:900;">&rarr;</span>
                 </button>
               </div>
             </div>
@@ -453,7 +452,7 @@
             <!-- SCREEN 7: LIVE TRACKING (SYNCED WITH B2B KANBAN) -->
             <div id="screen-tracking" class="phone-screen">
               <div class="app-nav-header">
-                <button class="nav-back-btn" onclick="mobileNav.goTo('catalog')">‹</button>
+                <button class="nav-back-btn" onclick="mobileNav.goTo('catalog')">&lsaquo;</button>
                 <span class="app-header-title">Seguimiento en Vivo</span>
                 <div style="width:32px;"></div>
               </div>
@@ -461,30 +460,30 @@
               <div class="tracking-wrapper">
                 <div class="tracking-hero-status">
                   <div style="font-size:0.75rem; color:var(--pizza-orange-light); font-weight:700;" id="track-order-code">#PZ-0000</div>
-                  <div style="font-size:1.25rem; font-weight:800; color:#fff; margin:4px 0;" id="track-eta-banner">Preparando en horno de leña</div>
+                  <div style="font-size:1.15rem; font-weight:800; color:#fff; margin:4px 0;" id="track-eta-banner">Preparando en horno de leña</div>
                   <div style="font-size:0.75rem; color:var(--text-muted);">Sincronizado en tiempo real con cocina</div>
                 </div>
 
                 <!-- Simulated Dark GPS Map -->
-                <div class="dark-gps-map" id="tracking-live-map" style="display:none;">
+                <div class="dark-gps-map" id="tracking-live-map" style="display:none; position:relative;">
                   <div class="gps-route"></div>
-                  <div class="gps-scooter">🛵</div>
-                  <div style="position:absolute; bottom:6px; right:8px; background:rgba(0,0,0,0.8); padding:2px 8px; border-radius:4px; font-size:0.65rem; color:#fff;">
-                    📍 GPS en Ruta
+                  <div class="gps-scooter" style="font-weight:800; font-size:0.75rem; background:var(--brand-red); color:#fff; padding:3px 6px; border-radius:4px; box-shadow:0 0 10px rgba(205,34,18,0.7);">MOTO</div>
+                  <div style="position:absolute; bottom:6px; right:8px; background:rgba(0,0,0,0.85); padding:3px 8px; border-radius:4px; font-size:0.65rem; color:#fff; border:1px solid rgba(255,255,255,0.1);">
+                    GPS Activo &bull; Popayán
                   </div>
                 </div>
 
                 <!-- Driver Card -->
                 <div class="driver-pill-info" id="tracking-driver-card" style="display:none;">
                   <div class="driver-profile">
-                    <div class="driver-avatar">👨‍🚀</div>
+                    <div class="driver-avatar" style="font-weight:800; font-size:0.85rem; color:#fff; background:var(--brand-red); display:flex; align-items:center; justify-content:center; border-radius:50%; width:36px; height:36px;">DR</div>
                     <div>
                       <div id="track-driver-name" style="font-size:0.85rem; font-weight:800; color:#fff;">Carlos Mendoza</div>
-                      <div id="track-driver-vehicle" style="font-size:0.72rem; color:var(--text-muted);">Moto Honda 160</div>
+                      <div id="track-driver-vehicle" style="font-size:0.72rem; color:var(--text-muted);">Moto Reparto #02 (Popayán)</div>
                     </div>
                   </div>
-                  <button style="background:var(--brand-red); border:none; color:#fff; width:34px; height:34px; border-radius:50%; cursor:pointer;">
-                    📞
+                  <button style="background:var(--brand-red); border:none; color:#fff; font-size:0.7rem; font-weight:700; padding:6px 12px; border-radius:6px; cursor:pointer;">
+                    Llamar
                   </button>
                 </div>
 
@@ -494,9 +493,9 @@
                 <!-- Delivery Address & PIN -->
                 <div style="background:var(--bg-card); border-radius:12px; padding:0.85rem; border:1px solid var(--border-color); font-size:0.78rem;">
                   <div style="font-weight:700; color:#fff; margin-bottom:2px;">Dirección de Entrega:</div>
-                  <div id="track-address-text" style="color:var(--text-muted); margin-bottom:6px;">Calle 93 #14-20</div>
+                  <div id="track-address-text" style="color:var(--text-muted); margin-bottom:6px;">Carrera 9 # 18N-45, Popayán</div>
                   <div style="display:flex; justify-content:space-between; border-top:1px solid rgba(255,255,255,0.06); padding-top:6px;">
-                    <span>PIN de Entrega:</span>
+                    <span>PIN Seguro de Entrega:</span>
                     <strong id="track-pin-code" style="color:var(--pizza-orange-light); font-size:0.95rem; letter-spacing:2px;">0000</strong>
                   </div>
                 </div>
@@ -508,17 +507,14 @@
           <!-- Bottom Navigation Bar (Visible on internal screens) -->
           <nav class="phone-bottom-nav" id="phone-bottom-nav">
             <button class="bottom-nav-item active" id="bnav-home">
-              <span class="b-icon">🏠</span>
-              <span>Menú</span>
+              <span class="b-icon" style="font-weight:800; font-size:0.78rem; text-transform:uppercase;">Menú</span>
             </button>
             <button class="bottom-nav-item" id="bnav-cart">
-              <span class="b-icon">🛒</span>
-              <span>Carrito</span>
+              <span class="b-icon" style="font-weight:800; font-size:0.78rem; text-transform:uppercase;">Carrito</span>
               <span class="nav-badge-count" id="cart-badge-count" style="display:none;">0</span>
             </button>
             <button class="bottom-nav-item" id="bnav-orders">
-              <span class="b-icon">📦</span>
-              <span>Rastreo</span>
+              <span class="b-icon" style="font-weight:800; font-size:0.78rem; text-transform:uppercase;">Rastreo</span>
             </button>
           </nav>
         </div>
@@ -535,12 +531,12 @@
             </p>
 
             <div style="background:rgba(205,34,18,0.15); border-left:3px solid var(--brand-red); padding:0.85rem; border-radius:6px; margin:1rem 0; font-size:0.8rem; color:#fff;">
-              👉 <strong>Pruébalo en vivo:</strong> Puedes hacer clic en los botones del teléfono (o en los botones superiores de la barra de flujo) para navegar entre:
-              <br><strong>Splash ➔ Catálogo ➔ Personalizador ➔ Carrito ➔ Checkout ➔ Live Tracking</strong>.
+              <strong>Pruébalo en vivo:</strong> Puedes hacer clic en los botones del teléfono (o en los botones superiores de la barra de flujo) para navegar entre:
+              <br><strong>Splash &rarr; Catálogo &rarr; Personalizador &rarr; Carrito &rarr; Checkout &rarr; Live Tracking</strong>.
             </div>
 
             <p style="font-size:0.8rem; color:var(--text-dim);">
-              💡 Cualquier pedido que finalices en el checkout de la app entra en tiempo real a la columna <strong>1. TOMADO</strong> del <em>Panel B2B Pizzería</em>.
+              Cualquier pedido que finalices en el checkout de la app entra en tiempo real a la columna <strong>1. TOMADO</strong> del <em>Panel B2B Pizzería</em>.
             </p>
           </div>
         </div>
@@ -562,7 +558,7 @@
                 <p style="font-size:0.78rem; color:var(--text-muted);">Caja presencial y Kiosko táctil de autoservicio.</p>
               </div>
             </div>
-            <span class="channel-tag pos">Caja 01 - Principal</span>
+            <span class="channel-tag pos">Caja 01 - Principal Popayán</span>
           </div>
 
           <div class="pos-grid-items" id="pos-catalog-grid"></div>
@@ -572,7 +568,7 @@
         <div class="pos-ticket-panel">
           <div class="pos-ticket-header">
             <div style="font-weight:800; font-size:1.1rem; color:#fff;">SR. PIZZA® - TICKET #POS-88</div>
-            <div style="font-size:0.75rem; color:var(--text-dim);">Mostrador / Consumo Local</div>
+            <div style="font-size:0.75rem; color:var(--text-dim);">Mostrador / Consumo Local Popayán</div>
           </div>
 
           <div class="pos-ticket-items-list" id="pos-ticket-items"></div>
@@ -594,16 +590,16 @@
 
           <div class="pos-payment-buttons">
             <button class="pos-pay-btn" onclick="checkoutPOS('Efectivo')">
-              <span style="font-size:1.4rem;">💵</span>
+              <span class="channel-tag pos" style="font-size:0.75rem; width:fit-content; margin:0 auto 4px;">EFECTIVO</span>
               <span>Cobrar Efectivo</span>
             </button>
             <button class="pos-pay-btn" onclick="checkoutPOS('Datáfono')">
-              <span style="font-size:1.4rem;">💳</span>
+              <span class="channel-tag web" style="font-size:0.75rem; width:fit-content; margin:0 auto 4px;">DATÁFONO</span>
               <span>Datáfono / Tarjeta</span>
             </button>
             <button class="pos-pay-btn" style="grid-column: span 2;" onclick="checkoutPOS('Código QR')">
-              <span style="font-size:1.4rem;">📱</span>
-              <span>Pago Rápido QR Transferencia</span>
+              <span class="channel-tag app" style="font-size:0.75rem; width:fit-content; margin:0 auto 4px;">QR DIGITAL</span>
+              <span>Pago Rápido QR Transferencia (Nequi / Bancolombia)</span>
             </button>
           </div>
         </div>
@@ -617,16 +613,16 @@
       <div class="landing-hero" style="background: radial-gradient(circle at top right, rgba(205,34,18,0.25), transparent 60%), var(--bg-secondary);">
         <img src="assets/sr_pizza_transparent.png" alt="Sr. Pizza" style="height:70px; margin-bottom:1rem;">
         <div class="hero-tag" style="background:rgba(205,34,18,0.2); border-color:var(--brand-red); color:#fca5a5;">
-          🔥 Pasión Napolitana y Horno a la Leña
+          Auténtica Pizza a la Leña en Popayán
         </div>
         <h1 class="hero-title">El Auténtico Sabor de Sr. Pizza®,<br>en Tu Mesa en Menos de 30 Minutos.</h1>
         <p class="hero-desc">
-          Descarga nuestra aplicación oficial para iOS y Android, personaliza tus pizzas favoritas al instante y sigue a tu repartidor en tiempo real por GPS.
+          Descarga nuestra aplicación oficial para iOS y Android, personaliza tus pizzas favoritas al instante y sigue a tu repartidor en tiempo real por GPS en Popayán.
         </p>
 
         <div class="store-badges-row">
           <div class="store-badge-btn" onclick="document.getElementById('main-tab-mobile').click()">
-            <span style="font-size:2rem;">🍏</span>
+            <span class="channel-tag web" style="font-size:0.9rem; font-weight:800;">iOS</span>
             <div style="text-align:left;">
               <div style="font-size:0.65rem; color:var(--text-muted);">Descárgalo en el</div>
               <div style="font-size:1rem; font-weight:800;">App Store</div>
@@ -634,7 +630,7 @@
           </div>
 
           <div class="store-badge-btn" onclick="document.getElementById('main-tab-mobile').click()">
-            <span style="font-size:2rem;">🤖</span>
+            <span class="channel-tag app" style="font-size:0.9rem; font-weight:800;">APK</span>
             <div style="text-align:left;">
               <div style="font-size:0.65rem; color:var(--text-muted);">Disponible en</div>
               <div style="font-size:1rem; font-weight:800;">Google Play</div>
@@ -649,7 +645,7 @@
          ------------------------------------------------------------------- -->
     <section id="view-mockups" class="view-section">
       <div style="margin-bottom: 2rem;">
-        <h2 style="font-size: 1.6rem; font-weight:800; color:#fff;">🎨 Renders Visuales de Alta Fidelidad para Presentación</h2>
+        <h2 style="font-size: 1.6rem; font-weight:800; color:#fff;">Renders Visuales de Alta Fidelidad para Presentación</h2>
         <p style="color:var(--text-muted); font-size:0.9rem;">
           Diseños de interfaz fotorrealistas listos para presentar al cliente, inversionistas o stakeholders de Sr. Pizza®.
         </p>
@@ -706,15 +702,15 @@
     <section id="view-arch" class="view-section">
       <div class="arch-container">
         <div class="arch-card">
-          <h3>📐 Clean Architecture Feature-First en Flutter (Módulo Domicilios)</h3>
+          <h3>Clean Architecture Feature-First en Flutter (Módulo Domicilios)</h3>
           <div class="clean-arch-diagram">
             <div class="clean-arch-box" style="border-top-color:var(--brand-red);">
               <h4>1. Capa de Dominio (Domain)</h4>
               <p style="font-size:0.75rem; color:var(--text-dim); margin-bottom:0.5rem;">Dart puro (Zero dependencias de UI)</p>
               <ul>
-                <li>📄 <strong>Entities:</strong> Order, OrderItem, OrderStatus, DriverTracking</li>
-                <li>📜 <strong>Repositories:</strong> IOrderRepository, IDriverTrackingRepository</li>
-                <li>🎯 <strong>Use Cases:</strong> WatchOrderStatusStream, TransitionOrderStatus</li>
+                <li><strong>Entities:</strong> Order, OrderItem, OrderStatus, DriverTracking</li>
+                <li><strong>Repositories:</strong> IOrderRepository, IDriverTrackingRepository</li>
+                <li><strong>Use Cases:</strong> WatchOrderStatusStream, TransitionOrderStatus</li>
               </ul>
             </div>
 
@@ -722,9 +718,9 @@
               <h4>2. Capa de Datos (Data)</h4>
               <p style="font-size:0.75rem; color:var(--text-dim); margin-bottom:0.5rem;">APIs REST, WebSockets y caché local</p>
               <ul>
-                <li>🌐 <strong>Remote DataSource:</strong> REST API (Dio)</li>
-                <li>⚡ <strong>WebSocket DataSource:</strong> Socket.io en tiempo real</li>
-                <li>💾 <strong>Local DataSource:</strong> Hive / SQLite offline</li>
+                <li><strong>Remote DataSource:</strong> REST API (Dio)</li>
+                <li><strong>WebSocket DataSource:</strong> Socket.io en tiempo real</li>
+                <li><strong>Local DataSource:</strong> Hive / SQLite offline</li>
               </ul>
             </div>
 
@@ -732,9 +728,9 @@
               <h4>3. Capa de Presentación</h4>
               <p style="font-size:0.75rem; color:var(--text-dim); margin-bottom:0.5rem;">Widgets y BLoC / Riverpod</p>
               <ul>
-                <li>🧠 <strong>BLoC:</strong> OrderLifecycleBloc, LiveMapCubit</li>
-                <li>📱 <strong>Widgets:</strong> StatusStepperWidget, DriverLiveMapView</li>
-                <li>🖥️ <strong>Screens:</strong> OrderTrackingScreen, ActiveDeliveriesKanban</li>
+                <li><strong>BLoC:</strong> OrderLifecycleBloc, LiveMapCubit</li>
+                <li><strong>Widgets:</strong> StatusStepperWidget, DriverLiveMapView</li>
+                <li><strong>Screens:</strong> OrderTrackingScreen, ActiveDeliveriesKanban</li>
               </ul>
             </div>
           </div>

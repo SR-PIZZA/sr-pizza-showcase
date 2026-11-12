@@ -18,7 +18,7 @@ El sistema es una plataforma integral omnicanal diseñada para operar la venta y
    - Terminales de punto de venta (POS) y kioskos de autoservicio para pedidos en mostrador y mesa con cobro presencial (efectivo, datáfono, QR).
 3. **Canal B2B (Operación de la Pizzería):**
    - Panel de control operativo para administradores, despachadores y cocina (KDS).
-   - Gestión estricta del ciclo de vida de los domicilios: **Tomado ➔ Aceptado ➔ En Preparación ➔ Despachado ➔ Entregado**.
+   - Gestión estricta del ciclo de vida de los domicilios: **Tomado -> Aceptado -> En Preparación -> Despachado -> Entregado**.
    - Asignación de repartidores y tracking de motorizados.
 
 ---
@@ -73,10 +73,10 @@ C4Context
 ```mermaid
 graph TB
     subgraph Frontend_Clients ["Clientes Frontales"]
-        AppFlutter["📱 App Móvil iOS / Android<br/>(Flutter)"]
-        KioskFlutter["🖥️ Kiosko / POS Presencial<br/>(Flutter / Web)"]
-        LandingReact["💻 Landing Page Comercial<br/>(React / Next.js)"]
-        PanelB2B["📊 Panel B2B Pizzería & KDS<br/>(React / Vite)"]
+        AppFlutter["App Movil iOS / Android<br/>(Flutter)"]
+        KioskFlutter["Kiosko / POS Presencial<br/>(Flutter / Web)"]
+        LandingReact["Landing Page Comercial<br/>(React / Next.js)"]
+        PanelB2B["Panel B2B Pizzeria & KDS<br/>(React / Vite)"]
     end
 
     subgraph Gateway_Layer ["Puerta de Enlace"]
@@ -171,7 +171,7 @@ pizza_mobile_kiosk/
 │       ├── catalog/                 # Menú, combos, personalizador de pizza
 │       ├── cart_checkout/           # Carrito, cupones, propinas, pasarela
 │       │
-│       └── delivery_orders/         # ⭐ MÓDULO ESTRELLA: GESTIÓN DE DOMICILIOS
+│       └── delivery_orders/         # MODULO PRINCIPAL: GESTION DE DOMICILIOS
 │           ├── domain/              # 1. Reglas puras de negocio (Zero Flutter)
 │           │   ├── entities/
 │           │   │   ├── order_entity.dart

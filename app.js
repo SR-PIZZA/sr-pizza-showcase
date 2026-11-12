@@ -79,42 +79,46 @@ const ORDER_STATES = {
 const PIZZA_CATALOG = [
   {
     id: 'p1',
-    name: 'Pepperoni Suprema',
-    desc: 'Doble pepperoni artesanal curado, mozzarella di bufala y salsa San Marzano.',
-    basePrice: 28900,
-    emoji: '🍕',
-    sizes: { personal: 19900, mediana: 28900, familiar: 39900 }
+    name: 'Pizza 8 Sabores 50cm',
+    desc: 'La reina de Popayán: 8 especialidades artesanales en una sola pizza gigante de 50 cm al horno de leña.',
+    basePrice: 80000,
+    badge: '8S',
+    image: 'assets/pizza_completa_todos_sabores_badge.webp',
+    sizes: { porcion: 10000, mediana: 45000, familiar: 80000 }
   },
   {
     id: 'p2',
-    name: 'Margherita Clásica DOP',
-    desc: 'Albahaca fresca, mozzarella fresca, aceite de oliva extra virgen y reducción de balsámico.',
-    basePrice: 24900,
-    emoji: '🌿',
-    sizes: { personal: 16900, mediana: 24900, familiar: 34900 }
+    name: 'Payanesa Especial',
+    desc: 'Trozos de tocineta crujiente, maíz tierno dulce, salsa de la casa y mozzarella fundido al horno.',
+    basePrice: 45000,
+    badge: 'PY',
+    image: 'assets/pizza_completa_todos_sabores_badge.webp',
+    sizes: { porcion: 10000, mediana: 45000, familiar: 80000 }
   },
   {
     id: 'p3',
-    name: 'Cuatro Quesos Trufada',
-    desc: 'Gorgonzola, fontina, parmigiano reggiano, mozzarella y gotas de aceite de trufa blanca.',
-    basePrice: 32900,
-    emoji: '🧀',
-    sizes: { personal: 22900, mediana: 32900, familiar: 44900 }
+    name: 'Maduritos & Queso',
+    desc: 'Plátano maduro caramelizado, queso campesino y mozzarella artesanal con reducción balsámica.',
+    basePrice: 45000,
+    badge: 'MD',
+    image: 'assets/pizza_completa_todos_sabores_badge.webp',
+    sizes: { porcion: 10000, mediana: 45000, familiar: 80000 }
   },
   {
     id: 'p4',
-    name: 'BBQ Pollo & Tocino',
-    desc: 'Pechuga ahumada al horno de leña, tocineta crujiente, cebolla morada y barbacoa artesanal.',
-    basePrice: 29900,
-    emoji: '🥓',
-    sizes: { personal: 20900, mediana: 29900, familiar: 41900 }
+    name: 'Pollo & Champiñones',
+    desc: 'Pechuga marinada al horno de leña, champiñones salteados frescos y finas hierbas de la huerta.',
+    basePrice: 45000,
+    badge: 'PC',
+    image: 'assets/pizza_completa_todos_sabores_badge.webp',
+    sizes: { porcion: 10000, mediana: 45000, familiar: 80000 }
   }
 ];
 
 const DRIVERS = [
-  { id: 'd1', name: 'Carlos Mendoza', vehicle: 'Moto Honda 160 (PK-92)', phone: '+57 312 458 9012' },
-  { id: 'd2', name: 'Andrea Gómez', vehicle: 'Bici Eléctrica #04', phone: '+57 300 789 4433' },
-  { id: 'd3', name: 'Mario Rossi', vehicle: 'Scooter Yamaha (XZ-11)', phone: '+57 315 221 8899' }
+  { id: 'd1', name: 'Carlos Mendoza', vehicle: 'Moto Reparto #02 (Sede Torres del Río)', phone: '+57 312 458 9012' },
+  { id: 'd2', name: 'Andrea Gómez', vehicle: 'Moto Reparto #05 (Sede TerraPlaza)', phone: '+57 300 789 4433' },
+  { id: 'd3', name: 'Mario Rossi', vehicle: 'Moto Reparto #07 (Sede El Uvo)', phone: '+57 315 221 8899' }
 ];
 
 class PizzaStore {
@@ -124,11 +128,11 @@ class PizzaStore {
         id: 'PZ-7821',
         customer: 'Santiago Botero',
         phone: '+57 310 998 1234',
-        address: 'Calle 93 #14-20, Apto 501',
+        address: 'Carrera 9 # 18N-45, Torres del Río',
         channel: 'APP',
         state: ORDER_STATES.TOMADO,
-        items: [{ name: 'Pepperoni Suprema (Mediana)', customs: 'Borde de Queso + Champiñones', price: 34900 }],
-        total: 34900,
+        items: [{ name: 'Pizza 8 Sabores 50cm', customs: 'Borde de Queso + Champiñones', price: 85000 }],
+        total: 89500,
         createdAt: new Date(Date.now() - 4 * 60000),
         driverId: null,
         pin: '5812'
@@ -137,11 +141,11 @@ class PizzaStore {
         id: 'PZ-7820',
         customer: 'Valeria Restrepo',
         phone: '+57 316 443 8901',
-        address: 'Cra 11 #85-32, Of. 402',
+        address: 'Calle 4 # 7-50, Centro Histórico',
         channel: 'WEB',
         state: ORDER_STATES.ACEPTADO,
-        items: [{ name: 'Margherita Clásica (Familiar)', customs: 'Masa Artesanal Delgada', price: 34900 }],
-        total: 34900,
+        items: [{ name: 'Payanesa Especial (Mediana)', customs: 'Masa Artesanal Delgada', price: 45000 }],
+        total: 49500,
         createdAt: new Date(Date.now() - 11 * 60000),
         driverId: null,
         pin: '2390'
@@ -150,11 +154,11 @@ class PizzaStore {
         id: 'PZ-7819',
         customer: 'Andrés Morales',
         phone: '+57 315 776 2200',
-        address: 'Calle 72 #9-15',
+        address: 'Calle 15N # 6-30, Santa Clara',
         channel: 'APP',
         state: ORDER_STATES.PREPARACION,
-        items: [{ name: 'Cuatro Quesos Trufada (Mediana)', customs: 'Extra Parmigiano', price: 32900 }],
-        total: 32900,
+        items: [{ name: 'Maduritos & Queso (Mediana)', customs: 'Extra Mozzarella', price: 49000 }],
+        total: 53500,
         createdAt: new Date(Date.now() - 18 * 60000),
         driverId: 'd1',
         pin: '9041'
@@ -163,24 +167,24 @@ class PizzaStore {
         id: 'PZ-7818',
         customer: 'Camila Díaz',
         phone: '+57 301 223 5589',
-        address: 'Diagonal 108 #19-45',
+        address: 'Carrera 6 # 65N-20, Ciudad Jardín',
         channel: 'APP',
         state: ORDER_STATES.DESPACHADO,
-        items: [{ name: 'BBQ Pollo & Tocino (Familiar)', customs: 'Cebolla extra', price: 41900 }],
-        total: 41900,
+        items: [{ name: 'Pollo & Champiñones (Familiar 50cm)', customs: 'Tocineta crispy', price: 84000 }],
+        total: 88500,
         createdAt: new Date(Date.now() - 28 * 60000),
         driverId: 'd2',
         pin: '1182'
       },
       {
         id: 'PZ-7815',
-        customer: 'Cliente Mostrador POS',
+        customer: 'Cliente Mostrador Sede',
         phone: 'N/A',
-        address: 'Consumo Local - Mesa 2',
+        address: 'Consumo Local - Sede Torres del Río',
         channel: 'POS',
         state: ORDER_STATES.ENTREGADO,
-        items: [{ name: 'Pepperoni Suprema (Personal)', customs: 'Combo Almuerzo', price: 19900 }],
-        total: 19900,
+        items: [{ name: 'Porción Pizza 8 Sabores', customs: 'Consumo Inmediato', price: 10000 }],
+        total: 10000,
         createdAt: new Date(Date.now() - 50 * 60000),
         driverId: null,
         pin: '0000'
@@ -250,7 +254,7 @@ class PizzaStore {
       id: newId,
       customer: customerData.name || 'Cliente App Móvil',
       phone: customerData.phone || '+57 312 889 4012',
-      address: customerData.address || 'Calle 93 #14-20, Apto 501',
+      address: customerData.address || 'Carrera 9 # 18N-45, Torres del Río, Popayán',
       channel: 'APP',
       state: ORDER_STATES.TOMADO,
       items: this.cart.map(i => ({
@@ -295,9 +299,9 @@ class MobileNavigator {
 
     // State for pizza being customized right now
     this.customizingPizza = PIZZA_CATALOG[0];
-    this.selectedSize = 'mediana';
-    this.selectedCrust = 'queso';
-    this.selectedToppings = ['Champiñones Frescos'];
+    this.selectedSize = 'familiar';
+    this.selectedCrust = 'artesanal';
+    this.selectedToppings = [];
   }
 
   init() {
@@ -393,7 +397,7 @@ class MobileNavigator {
 
   startCustomizing(pizzaId) {
     this.customizingPizza = PIZZA_CATALOG.find(p => p.id === pizzaId) || PIZZA_CATALOG[0];
-    this.selectedSize = 'mediana';
+    this.selectedSize = 'familiar';
     this.selectedCrust = 'artesanal';
     this.selectedToppings = [];
     this.goTo('customizer');
@@ -403,15 +407,16 @@ class MobileNavigator {
     const pizza = this.customizingPizza;
     document.getElementById('custom-pizza-title').innerText = pizza.name;
     document.getElementById('custom-pizza-desc').innerText = pizza.desc;
-    document.getElementById('custom-pizza-emoji').innerText = pizza.emoji;
+    const imgEl = document.getElementById('custom-pizza-img');
+    if (imgEl && pizza.image) imgEl.src = pizza.image;
     this.updateCustomizerPrice();
   }
 
   updateCustomizerPrice() {
     const pizza = this.customizingPizza;
     let price = pizza.sizes[this.selectedSize] || pizza.basePrice;
-    if (this.selectedCrust === 'queso') price += 4500;
-    price += (this.selectedToppings.length * 3500);
+    if (this.selectedCrust === 'queso') price += 5000;
+    price += (this.selectedToppings.length * 4000);
 
     document.getElementById('custom-calc-price').innerText = formatMoney(price);
     return price;
@@ -423,7 +428,7 @@ class MobileNavigator {
       pizzaId: this.customizingPizza.id,
       name: this.customizingPizza.name,
       size: this.selectedSize.toUpperCase(),
-      crust: this.selectedCrust === 'queso' ? 'Borde de Queso (+4.5k)' : 'Masa Artesanal Delgada',
+      crust: this.selectedCrust === 'queso' ? 'Borde de Queso (+5k)' : 'Masa Artesanal Delgada',
       toppings: [...this.selectedToppings],
       price: finalPrice,
       qty: 1
@@ -440,8 +445,8 @@ class MobileNavigator {
     if (store.cart.length === 0) {
       list.innerHTML = `
         <div style="text-align:center; padding:3rem 1rem; color:var(--text-muted);">
-          <div style="font-size:3rem; margin-bottom:0.5rem;">🛒</div>
-          <p>Tu carrito está vacío</p>
+          <div style="font-size:1.1rem; font-weight:800; color:var(--pizza-orange-light); margin-bottom:0.5rem;">CARRITO VACIO</div>
+          <p>Aún no has agregado pizzas a tu orden</p>
           <button class="btn-splash-start" style="margin-top:1rem; padding:0.6rem;" onclick="mobileNav.goTo('catalog')">
             Explorar Menú
           </button>
@@ -493,11 +498,11 @@ class MobileNavigator {
     document.getElementById('track-address-text').innerText = order.address;
 
     const states = [
-      { key: ORDER_STATES.TOMADO, title: '1. Pedido Tomado', desc: 'Registrado en el sistema', icon: '📝' },
-      { key: ORDER_STATES.ACEPTADO, title: '2. Aceptado', desc: 'Confirmado por cocina', icon: '👨‍🍳' },
-      { key: ORDER_STATES.PREPARACION, title: '3. En el Horno', desc: 'Cocción a la leña', icon: '🔥' },
-      { key: ORDER_STATES.DESPACHADO, title: '4. Despachado', desc: 'Repartidor en camino', icon: '🛵' },
-      { key: ORDER_STATES.ENTREGADO, title: '5. Entregado', desc: '¡Buen provecho!', icon: '🎉' }
+      { key: ORDER_STATES.TOMADO, title: '1. Pedido Tomado', desc: 'Registrado en el sistema', icon: '1' },
+      { key: ORDER_STATES.ACEPTADO, title: '2. Aceptado', desc: 'Confirmado por cocina Popayán', icon: '2' },
+      { key: ORDER_STATES.PREPARACION, title: '3. En el Horno', desc: 'Cocción artesanal a la leña', icon: '3' },
+      { key: ORDER_STATES.DESPACHADO, title: '4. Despachado', desc: 'Repartidor en camino por Popayán', icon: '4' },
+      { key: ORDER_STATES.ENTREGADO, title: '5. Entregado', desc: 'Pedido recibido con éxito', icon: '5' }
     ];
 
     const currentIdx = states.findIndex(s => s.key === order.state);
@@ -510,7 +515,7 @@ class MobileNavigator {
 
       return `
         <div class="stepper-row ${cls}">
-          <div class="stepper-bullet">${idx < currentIdx ? '✓' : s.icon}</div>
+          <div class="stepper-bullet" style="font-weight:800; font-size:0.75rem;">${idx < currentIdx ? 'OK' : s.icon}</div>
           <div>
             <div style="font-weight:700; color:#fff; font-size:0.83rem;">${s.title}</div>
             <div style="font-size:0.7rem; color:var(--text-dim);">${s.desc}</div>
@@ -529,15 +534,15 @@ class MobileNavigator {
       driverEl.style.display = 'flex';
       document.getElementById('track-driver-name').innerText = driver.name;
       document.getElementById('track-driver-vehicle').innerText = driver.vehicle;
-      document.getElementById('track-eta-banner').innerText = '🛵 Repartidor en camino: Llega en ~10 min';
+      document.getElementById('track-eta-banner').innerText = 'Repartidor en camino: Llega en ~10 min (Popayán)';
     } else if (order.state === ORDER_STATES.ENTREGADO) {
       mapEl.style.display = 'none';
       driverEl.style.display = 'none';
-      document.getElementById('track-eta-banner').innerText = '🎉 ¡Pedido entregado con éxito!';
+      document.getElementById('track-eta-banner').innerText = 'Pedido entregado con éxito en Popayán';
     } else {
       mapEl.style.display = 'none';
       driverEl.style.display = 'none';
-      document.getElementById('track-eta-banner').innerText = '🔥 Preparando en cocina: ~25 min';
+      document.getElementById('track-eta-banner').innerText = 'Preparando en horno de leña: ~25 min';
     }
   }
 }
@@ -598,15 +603,15 @@ function renderB2BKanban(state) {
 
     let actionBtn = '';
     if (order.state === ORDER_STATES.TOMADO) {
-      actionBtn = `<button class="k-btn-advance" onclick="store.advanceOrder('${order.id}')">✓ Aceptar Pedido</button>`;
+      actionBtn = `<button class="k-btn-advance" onclick="store.advanceOrder('${order.id}')">Aceptar Pedido</button>`;
     } else if (order.state === ORDER_STATES.ACEPTADO) {
-      actionBtn = `<button class="k-btn-advance" onclick="store.advanceOrder('${order.id}')">👨‍🍳 Pasar a Cocina</button>`;
+      actionBtn = `<button class="k-btn-advance" onclick="store.advanceOrder('${order.id}')">Pasar a Cocina</button>`;
     } else if (order.state === ORDER_STATES.PREPARACION) {
-      actionBtn = `<button class="k-btn-advance" onclick="store.advanceOrder('${order.id}')">🛵 Despachar Domicilio</button>`;
+      actionBtn = `<button class="k-btn-advance" onclick="store.advanceOrder('${order.id}')">Despachar Domicilio</button>`;
     } else if (order.state === ORDER_STATES.DESPACHADO) {
-      actionBtn = `<button class="k-btn-advance" onclick="store.advanceOrder('${order.id}')">✅ Confirmar Entrega</button>`;
+      actionBtn = `<button class="k-btn-advance" onclick="store.advanceOrder('${order.id}')">Confirmar Entrega</button>`;
     } else {
-      actionBtn = `<div style="font-size:0.72rem; color:var(--success-green); text-align:center; padding-top:4px;">✓ Finalizado</div>`;
+      actionBtn = `<div style="font-size:0.72rem; color:var(--success-green); text-align:center; padding-top:4px; font-weight:700;">Finalizado</div>`;
     }
 
     card.innerHTML = `
@@ -618,7 +623,7 @@ function renderB2BKanban(state) {
       </div>
 
       <div style="font-size:0.8rem; color:#f1f5f9; font-weight:600;">${order.customer}</div>
-      <div style="font-size:0.72rem; color:var(--text-muted); margin-bottom:6px;">📍 ${order.address}</div>
+      <div style="font-size:0.72rem; color:var(--text-muted); margin-bottom:6px;">${order.address}</div>
 
       <div style="background:rgba(0,0,0,0.25); border-radius:6px; padding:6px; font-size:0.75rem; margin-bottom:6px;">
         ${order.items.map(i => `<div>${i.name}</div>`).join('')}
@@ -626,8 +631,8 @@ function renderB2BKanban(state) {
 
       <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.06); padding-top:6px;">
         <span style="font-weight:800; color:var(--success-green);">${formatMoney(order.total)}</span>
-        <button style="background:none; border:none; color:var(--info-blue); font-size:0.7rem; cursor:pointer;" onclick="inspectOrderInMobile('${order.id}')">
-          📲 Ver en App
+        <button style="background:none; border:none; color:var(--info-blue); font-size:0.7rem; font-weight:700; cursor:pointer;" onclick="inspectOrderInMobile('${order.id}')">
+          Ver en App
         </button>
       </div>
 
@@ -645,6 +650,119 @@ window.inspectOrderInMobile = function(orderId) {
   document.getElementById('main-tab-mobile').click();
   mobileNav.goTo('tracking');
 };
+
+// =============================================================================
+// POS (Point of Sale) LOGIC & BINDINGS
+// =============================================================================
+let posTicket = [
+  { name: 'Porción 8 Sabores', price: 10000, qty: 2 },
+  { name: 'Gaseosa Postobón 400ml', price: 5000, qty: 1 }
+];
+
+function renderPOSTicket() {
+  const container = document.getElementById('pos-ticket-items');
+  if (!container) return;
+
+  if (posTicket.length === 0) {
+    container.innerHTML = '<div style="text-align:center; padding:1.5rem; color:var(--text-muted); font-size:0.8rem;">Ticket vacío. Selecciona productos a la izquierda.</div>';
+    document.getElementById('pos-subtotal').innerText = '$0';
+    document.getElementById('pos-iva').innerText = '$0';
+    document.getElementById('pos-total').innerText = '$0';
+    return;
+  }
+
+  container.innerHTML = posTicket.map((item, idx) => `
+    <div style="display:flex; justify-content:space-between; align-items:center; padding:6px 0; border-bottom:1px dashed rgba(255,255,255,0.08); font-size:0.82rem;">
+      <div>
+        <div style="font-weight:700; color:#fff;">${item.name}</div>
+        <div style="font-size:0.72rem; color:var(--text-muted);">${item.qty} x ${formatMoney(item.price)}</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span style="font-weight:800; color:#fff;">${formatMoney(item.price * item.qty)}</span>
+        <button style="background:none; border:none; color:var(--brand-red); cursor:pointer; font-weight:800; font-size:0.9rem;" onclick="removePOSItem(${idx})">&times;</button>
+      </div>
+    </div>
+  `).join('');
+
+  const subtotal = posTicket.reduce((s, i) => s + (i.price * i.qty), 0);
+  const impoconsumo = Math.round(subtotal * 0.08);
+  const total = subtotal + impoconsumo;
+
+  document.getElementById('pos-subtotal').innerText = formatMoney(subtotal);
+  document.getElementById('pos-iva').innerText = formatMoney(impoconsumo);
+  document.getElementById('pos-total').innerText = formatMoney(total);
+}
+
+window.addPOSItem = function(name, price) {
+  audio.play('click');
+  const existing = posTicket.find(i => i.name === name);
+  if (existing) {
+    existing.qty += 1;
+  } else {
+    posTicket.push({ name, price, qty: 1 });
+  }
+  renderPOSTicket();
+};
+
+window.removePOSItem = function(idx) {
+  posTicket.splice(idx, 1);
+  renderPOSTicket();
+};
+
+window.checkoutPOS = function(method) {
+  if (posTicket.length === 0) {
+    alert('Agrega al menos un producto al ticket antes de cobrar.');
+    return;
+  }
+
+  const subtotal = posTicket.reduce((s, i) => s + (i.price * i.qty), 0);
+  const total = subtotal + Math.round(subtotal * 0.08);
+  const posOrderId = 'POS-' + Math.floor(1000 + Math.random() * 9000);
+
+  store.orders.unshift({
+    id: posOrderId,
+    customer: `Cliente Mostrador (${method})`,
+    phone: 'Presencial',
+    address: 'Sede Torres del Río - Mostrador',
+    channel: 'POS',
+    state: ORDER_STATES.TOMADO,
+    items: posTicket.map(i => ({ name: `${i.name} (x${i.qty})`, customs: 'Consumo Local', price: i.price * i.qty })),
+    total: total,
+    createdAt: new Date(),
+    driverId: null,
+    pin: '0000'
+  });
+
+  audio.play('new_order');
+  store.notify();
+  posTicket = [];
+  renderPOSTicket();
+  alert(`Cobro de ${formatMoney(total)} registrado con éxito (${method}).\nOrden ${posOrderId} transmitida al Kanban de cocina.`);
+};
+
+function renderPOSCatalog() {
+  const container = document.getElementById('pos-catalog-grid');
+  if (!container) return;
+
+  const quickItems = [
+    { name: 'Porción 8 Sabores', price: 10000, cat: 'Porción' },
+    { name: 'Pizza Mediana 8 Sabores', price: 45000, cat: 'Mediana' },
+    { name: 'Pizza 8 Sabores 50cm', price: 80000, cat: 'Familiar' },
+    { name: 'Porción Payanesa', price: 10000, cat: 'Porción' },
+    { name: 'Mediana Payanesa', price: 45000, cat: 'Mediana' },
+    { name: 'Porción Maduritos', price: 10000, cat: 'Porción' },
+    { name: 'Gaseosa Postobón 400ml', price: 5000, cat: 'Bebida' },
+    { name: 'Cerveza Club Colombia', price: 7000, cat: 'Bebida' }
+  ];
+
+  container.innerHTML = quickItems.map(item => `
+    <div class="pos-item-card" onclick="addPOSItem('${item.name}', ${item.price})" style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:10px; padding:0.85rem; cursor:pointer; text-align:center; transition:border 0.2s;">
+      <span class="channel-tag pos" style="font-size:0.65rem; margin-bottom:4px; display:inline-block;">${item.cat}</span>
+      <div style="font-weight:700; color:#fff; font-size:0.85rem; margin:4px 0;">${item.name}</div>
+      <div style="font-weight:800; color:var(--pizza-orange-light); font-size:0.9rem;">${formatMoney(item.price)}</div>
+    </div>
+  `).join('');
+}
 
 // =============================================================================
 // 5. GLOBAL INITIALIZATION & BINDINGS
@@ -722,7 +840,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const newOrder = store.createOrderFromCart({
       name: 'David Santana',
       phone: '+57 312 990 8821',
-      address: 'Calle 93 #14-20, Apto 501'
+      address: 'Carrera 9 # 18N-45, Torres del Río, Popayán'
     });
 
     document.getElementById('success-order-code').innerText = '#' + newOrder.id;
@@ -732,7 +850,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // Demo Order Button in Top Nav
   document.getElementById('btn-top-demo')?.addEventListener('click', () => {
     const demoNames = ['Mariana Restrepo', 'Felipe Castro', 'Alejandra Ruiz'];
-    const demoAddrs = ['Cra 7 #71-52', 'Calle 100 #19A-20', 'Transversal 23 #97-10'];
+    const demoAddrs = [
+      'Calle 5 # 4-20, Centro Histórico',
+      'Carrera 9 # 18N-45, Torres del Río',
+      'Calle 15N # 6-30, Santa Clara'
+    ];
     const rName = demoNames[Math.floor(Math.random() * demoNames.length)];
     const rAddr = demoAddrs[Math.floor(Math.random() * demoAddrs.length)];
 
@@ -743,8 +865,8 @@ document.addEventListener('DOMContentLoaded', () => {
       address: rAddr,
       channel: 'APP',
       state: ORDER_STATES.TOMADO,
-      items: [{ name: 'Pepperoni Suprema (Mediana)', customs: 'Borde de Queso', price: 33400 }],
-      total: 33400,
+      items: [{ name: 'Pizza 8 Sabores 50cm', customs: 'Borde de Queso', price: 85000 }],
+      total: 89500,
       createdAt: new Date(),
       driverId: null,
       pin: '4491'
@@ -767,7 +889,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (catGrid) {
     catGrid.innerHTML = PIZZA_CATALOG.map(p => `
       <div class="product-item-card" onclick="mobileNav.startCustomizing('${p.id}')">
-        <div class="product-img-box">${p.emoji}</div>
+        <div class="product-img-box" style="display:flex; align-items:center; justify-content:center; overflow:hidden;">
+          <img src="${p.image}" alt="${p.name}" style="width:48px; height:48px; object-fit:contain; border-radius:50%;">
+        </div>
         <div class="product-details">
           <div>
             <div class="product-name">${p.name}</div>
@@ -781,6 +905,10 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `).join('');
   }
+
+  // POS Initial Render
+  renderPOSCatalog();
+  renderPOSTicket();
 
   // Initial Boot
   renderB2BKanban(store);
